@@ -13,6 +13,10 @@ CREATE TABLE `user` (
   PRIMARY KEY (`user_id`)
 );
 
+-- Default admin account
+INSERT INTO `user` (`User_id`, `Username`, `Password`, `Phone_Number`, `Address`, `Role`) VALUES
+('68406ea2-f7ad-4808-bf68-6573629be257', 'admin', 'qLRywyE0xJuJn1MzXynPug==', '+62123456789', 'Binus', 'admin'),
+
 DROP TABLE IF EXISTS `item`;
 CREATE TABLE `item` (
   `Item_id` varchar(255) NOT NULL,
@@ -57,7 +61,6 @@ USE calouseif;
 
 INSERT INTO `user` (`User_id`, `Username`, `Password`, `Phone_Number`, `Address`, `Role`) VALUES
 ('55923e3a-5781-42a4-858c-309605badaf3', 'Buyer', 'y0Sc9AK35Fck9ZMv022erg==', '+62123456789', 'Binus', 'buyer'),
-('68406ea2-f7ad-4808-bf68-6573629be257', 'admin', 'qLRywyE0xJuJn1MzXynPug==', '+62123456789', 'Binus', 'admin'),
 ('b4e480c9-e689-4b45-91b7-b737063f312b', 'Seller', 'y0Sc9AK35Fck9ZMv022erg==', '+62123456789', 'Binus', 'seller');
 
 INSERT INTO item (Item_id, Item_seller_id, Item_name, Item_size, Item_price, Item_category, Item_status, Item_wishlist, Item_offer_status)
