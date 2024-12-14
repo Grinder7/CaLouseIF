@@ -9,7 +9,7 @@ public class SellerEditController {
 	}
 
 	public void handleSubmitItem(String item_id, String item_name, String item_category, String item_size,
-			String item_price) {
+			String item_price) throws IllegalArgumentException{
 		itemController.EditItem(item_id, item_name, item_category, item_size, item_price);
 	}
 

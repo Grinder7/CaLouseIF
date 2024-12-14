@@ -88,7 +88,7 @@ public class User {
 	}
 
 	private static boolean isValidPhoneNumber(String phoneNumber) {
-		if (!phoneNumber.startsWith("+62") || phoneNumber.length() != 12)
+		if (!phoneNumber.startsWith("+62") || phoneNumber.length() < 12)
 			return false;
 //		check only the character after +62
 		for (int i = 3; i < phoneNumber.length(); i++) {
@@ -196,7 +196,7 @@ public class User {
 					"Password must be more than 8 characters and include special characters (!, @, #, $, %, ^, &, *)");
 
 		if (!isValidPhoneNumber(Phone_Number))
-			throw new IllegalArgumentException("Phone number must contain +62 and 10 numbers long");
+			throw new IllegalArgumentException("Phone number must contain +62 and at least 10 numbers long");
 
 		if (!isValidAddress(Address))
 			throw new IllegalArgumentException("Address must be filled");

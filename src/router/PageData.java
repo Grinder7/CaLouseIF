@@ -11,6 +11,7 @@ import controller.RegisterController;
 import controller.SellerDashboardController;
 import controller.SellerEditController;
 import controller.SellerOfferedItemController;
+import controller.SellerUploadController;
 import controller.TransactionController;
 import controller.UserController;
 import controller.WishlistController;
@@ -67,7 +68,7 @@ public class PageData {
 	 * @return a {@code Node} representing the seller upload page view
 	 */
 	public static Node sellerUploadPage() {
-		return new SellerUploadView();
+		return new SellerUploadView(new SellerUploadController(new ItemController()));
 	}
 
 	/**
