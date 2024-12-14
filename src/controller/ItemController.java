@@ -2,8 +2,6 @@ package controller;
 
 import javafx.collections.ObservableList;
 import model.Item;
-import model.User;
-import session.UserSession;
 
 public class ItemController {
 	/**
