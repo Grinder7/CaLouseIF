@@ -83,7 +83,7 @@ VALUES
     ('5517761a-1a61-4bcc-9ce9-55be050c9f51', 'b4e480c9-e689-4b45-91b7-b737063f312b', 'Yellow Shirt', 'S', 125000, 'Tops', 'waiting', '0', 'no_offer'),
     ('324ac9c2-f586-4e20-8bff-706c1fa57de4', 'b4e480c9-e689-4b45-91b7-b737063f312b', 'Gray Sweater', 'L', 185000, 'Outerwear', 'approved', '0', 'offer,175000,55923e3a-5781-42a4-858c-309605badaf3'),
     ('5a75a88c-b061-4aac-8f34-77e979013256', 'b4e480c9-e689-4b45-91b7-b737063f312b', 'Black Dress', 'M', 260000, 'Dresses', 'waiting', '0', 'no_offer'),
-    ('2225cbc2-d679-4a08-8306-891f0711937c', 'b4e480c9-e689-4b45-91b7-b737063f312b', 'Pink Tank Top', 'S', 95000, 'Tops', 'bought', '0', 'no_offer'),
+    ('2225cbc2-d679-4a08-8306-891f0711937c', 'b4e480c9-e689-4b45-91b7-b737063f312b', 'Pink Tank Top', 'S', 95000, 'Tops', 'bought,55923e3a-5781-42a4-858c-309605badaf3', '0', 'no_offer'),
     ('08f0cf81-edb1-4528-a661-6c09f64d96cb', 'b4e480c9-e689-4b45-91b7-b737063f312b', 'White Blouse', 'M', 135000, 'Tops', 'approved', '0', 'no_offer'),
     ('227d523b-ff15-4634-bb4a-7e3b0ff15c1b', 'b4e480c9-e689-4b45-91b7-b737063f312b', 'Brown Pants', 'L', 155000, 'Bottoms', 'approved', '0', 'offer,150000,55923e3a-5781-42a4-858c-309605badaf3'),
     ('bb589a9b-2ef4-4063-bd2a-75deed66526e', 'b4e480c9-e689-4b45-91b7-b737063f312b', 'Green Skirt', 'S', 148000, 'Bottoms', 'waiting', '0', 'no_offer'),
@@ -100,7 +100,7 @@ VALUES
     ('1e510dbe-0fd5-45bb-8945-5af69a559db2', 'b4e480c9-e689-4b45-91b7-b737063f312b', 'White Hoodie', 'M', 240000, 'Outerwear', 'approved', '0', 'no_offer'),
     ('a2dd142d-3fa2-44c0-8f49-6f8175a53bb3', 'b4e480c9-e689-4b45-91b7-b737063f312b', 'Pink Dress', 'S', 270000, 'Dresses', 'approved', '0', 'offer,260000,55923e3a-5781-42a4-858c-309605badaf3'),
     ('825ae865-3ad2-4060-87e9-990c43142f81', 'b4e480c9-e689-4b45-91b7-b737063f312b', 'Blue Blouse', 'L', 137000, 'Tops', 'waiting', '0', 'no_offer'),
-    ('d662587b-c33c-40e3-b384-f520de8f50fa', 'b4e480c9-e689-4b45-91b7-b737063f312b', 'Orange T-shirt', 'M', 107000, 'Tops', 'bought', '0', 'no_offer'),
+    ('d662587b-c33c-40e3-b384-f520de8f50fa', 'b4e480c9-e689-4b45-91b7-b737063f312b', 'Orange T-shirt', 'M', 107000, 'Tops', 'bought,55923e3a-5781-42a4-858c-309605badaf3', '0', 'no_offer'),
     ('d0e9cfbc-e241-441a-8ecc-6ba25902fe95', 'b4e480c9-e689-4b45-91b7-b737063f312b', 'Green Pants', 'L', 159000, 'Bottoms', 'approved', '0', 'no_offer'),
     ('9844c4ee-8695-4fa6-8935-c893ff569571', 'b4e480c9-e689-4b45-91b7-b737063f312b', 'Yellow Dress', 'S', 265000, 'Dresses', 'waiting', '0', 'no_offer'),
     ('193a0953-c600-4ca0-a54b-d236d81fc4cc', 'b4e480c9-e689-4b45-91b7-b737063f312b', 'Black Shorts', 'M', 87000, 'Bottoms', 'approved', '0', 'no_offer'),
@@ -111,7 +111,7 @@ VALUES
     ('9e0099e7-8b0f-43a1-9b9d-42b386b29d20', 'b4e480c9-e689-4b45-91b7-b737063f312b', 'Pink Blouse', 'L', 138000, 'Tops', 'approved', '0', 'no_offer'),
     ('d57bbfbe-c189-4f3e-b020-671cb2abb5bb', 'b4e480c9-e689-4b45-91b7-b737063f312b', 'Brown Dress', 'S', 275000, 'Dresses', 'approved', '0', 'offer,265000,55923e3a-5781-42a4-858c-309605badaf3'),
     ('22d3e50c-2e6e-46ab-ac9e-dded1b9681fb', 'b4e480c9-e689-4b45-91b7-b737063f312b', 'Green Hoodie', 'M', 250000, 'Outerwear', 'approved', '0', 'no_offer'),
-    ('bef59b49-bb95-458f-958e-b8a9fb7d569b', 'b4e480c9-e689-4b45-91b7-b737063f312b', 'Yellow Jeans', 'L', 170000, 'Bottoms', 'bought', '0', 'no_offer');
+    ('bef59b49-bb95-458f-958e-b8a9fb7d569b', 'b4e480c9-e689-4b45-91b7-b737063f312b', 'Yellow Jeans', 'L', 170000, 'Bottoms', 'bought,55923e3a-5781-42a4-858c-309605badaf3', '0', 'no_offer');
 
 INSERT INTO transaction (User_id, Item_id, transaction_id)
 VALUES
