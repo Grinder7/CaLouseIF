@@ -309,7 +309,7 @@ public class ItemRepository {
 	}
 
 	public ObservableList<Item> getItemBySeller(String Item_seller_id) {
-		String query = "SELECT * FROM item WHERE Item_seller_id = ? AND Item_status NOT LIKE 'waiting'";
+		String query = "SELECT * FROM item WHERE Item_seller_id = ? AND Item_status NOT LIKE 'waiting' AND Item_status NOT LIKE 'bought'";
 		itemList.clear();
 		try (PreparedStatement pstmt = db.getConnection().prepareStatement(query)) {
 			pstmt.setString(1, Item_seller_id);
