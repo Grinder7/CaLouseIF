@@ -15,7 +15,7 @@ CREATE TABLE `user` (
 
 -- Default admin account
 INSERT INTO `user` (`User_id`, `Username`, `Password`, `Phone_Number`, `Address`, `Role`) VALUES
-('68406ea2-f7ad-4808-bf68-6573629be257', 'admin', 'qLRywyE0xJuJn1MzXynPug==', '+62123456789', 'Binus', 'admin'),
+('68406ea2-f7ad-4808-bf68-6573629be257', 'admin', 'qLRywyE0xJuJn1MzXynPug==', '+62123456789', 'Binus', 'admin');
 
 DROP TABLE IF EXISTS `item`;
 CREATE TABLE `item` (
