@@ -98,7 +98,7 @@ public class SellerEditView extends VBox {
 				String Item_size = ukuranItem.getText();
 				String Item_price = hargaItem.getText();
 				controller.handleSubmitItem(Item_id, Item_name, Item_category, Item_size, Item_price);
-				messageLabel.setText("Item uploaded");
+				messageLabel.setText("Item edited");
 				messageLabel.setTextFill(Color.GREEN);
 			} catch (IllegalArgumentException ex) {
 				messageLabel.setText(ex.getMessage());
