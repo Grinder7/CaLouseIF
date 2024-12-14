@@ -52,7 +52,8 @@ public class Transaction {
 		ItemRepository itemRepository = new ItemRepository();
 		Item item = itemRepository.getItemById(Item_id);
 		String[] itemStatus = item.getItem_status().split(",");
-		if(itemStatus[0].equals("bought")) {
+//		check if the item is already sold, if it is check if the buyer is the same as request
+		if(itemStatus[0].equals("bought") && !itemStatus[1].equals(User_id)) {
 			return null;
 		}
 		return transactionRepository.createTransaction(User_id, Item_id);

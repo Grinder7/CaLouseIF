@@ -2,37 +2,42 @@ package view;
 
 import java.util.Arrays;
 
-import controller.SellerDashboardController;
+import controller.SellerOfferedItemController;
 import javafx.beans.binding.Bindings;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import model.Item;
 
 // Show approved items that the seller sells
-public class SellerDashboardView extends BorderPane {
+public class SellerOfferedItemView extends BorderPane {
 	private TableView<Item> itemTable;
 	private TableColumn<Item, String> nameColumn, categoryColumn, sizeColumn, priceColumn, itemOfferStatusColumn;
 	private VBox mainContent;
 	private HBox actionBarTopHBox, actionBarBottomHBox;
-	private Button refreshTableButton, editButton, deleteButton;
+	private Button refreshTableButton, acceptOfferButton, declineOfferButton;
+	private TextField reasonTextField;
+	private Label messageLabel;
 
-	private SellerDashboardController controller;
+	private SellerOfferedItemController controller;
 	private ObservableList<Item> itemList;
 
-	public SellerDashboardView(SellerDashboardController controller) {
+	public SellerOfferedItemView(SellerOfferedItemController controller) {
 		super();
 		this.controller = controller;
-		itemList = controller.getSellerItems();
+		itemList = controller.getOfferedSellerItems();
 		initComponents();
 		addComponents();
 		styleComponents();
@@ -72,14 +77,20 @@ public class SellerDashboardView extends BorderPane {
 		actionBarBottomHBox = new HBox(15);
 		
 		refreshTableButton = new Button("Refresh Table");
-		editButton = new Button("Edit");
-		deleteButton = new Button("Delete");
+		acceptOfferButton = new Button("Accept Offer");
+		declineOfferButton = new Button("Decline Offer");
+		
+		reasonTextField = new TextField();
+		reasonTextField.setPromptText("Enter reason for decline..");
+		
+		messageLabel = new Label();
+
 	}
 
 	private void addComponents() {
 		mainContent.getChildren().add(itemTable);
 		actionBarTopHBox.getChildren().add(refreshTableButton);
-		actionBarBottomHBox.getChildren().addAll(editButton, deleteButton);
+		actionBarBottomHBox.getChildren().addAll(acceptOfferButton, declineOfferButton, reasonTextField, messageLabel);
 		
 		this.setCenter(mainContent);
 		this.setTop(actionBarTopHBox);
@@ -100,29 +111,35 @@ public class SellerDashboardView extends BorderPane {
 		actionBarTopHBox.setPadding(new Insets(0, 15, 15, 15));
 		actionBarBottomHBox.setPadding(new Insets(15));
 		actionBarBottomHBox.setAlignment(Pos.CENTER);
+		
+		messageLabel.setVisible(false);
 	}
 
 	private void setActionNode() {
 		refreshTableButton.setOnMouseClicked(e -> {
 			if(e.getButton() == MouseButton.PRIMARY) {
-				itemList = controller.getSellerItems();
+				itemList = controller.getOfferedSellerItems();
 			}
 		});
 		
-		editButton.setOnMouseClicked(e -> {
+		acceptOfferButton.setOnMouseClicked(e -> {
 			if(e.getButton() == MouseButton.PRIMARY) {
 				Item item = itemTable.getSelectionModel().getSelectedItem();
-				if (item != null) {
-					controller.handleEditItem(item);
-				}
+				controller.handleAcceptOffer(item);
 			}
 		});
-		
-		deleteButton.setOnMouseClicked(e -> {
+		declineOfferButton.setOnMouseClicked(e -> {
 			if(e.getButton() == MouseButton.PRIMARY) {
-				Item item = itemTable.getSelectionModel().getSelectedItem();
-				if (item != null) {
-					controller.handleDeleteItem(item);
+				try {
+					Item item = itemTable.getSelectionModel().getSelectedItem();
+					String reason = reasonTextField.getText();
+					controller.handleDeclineOffer(item, reason);
+					messageLabel.setText("Offer declined");
+					messageLabel.setTextFill(Color.RED);
+				} catch (IllegalArgumentException ex) {
+					messageLabel.setVisible(true);
+					messageLabel.setText(ex.getMessage());
+					messageLabel.setTextFill(Color.RED);
 				}
 			}
 		});

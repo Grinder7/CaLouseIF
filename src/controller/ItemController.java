@@ -22,7 +22,7 @@ public class ItemController {
 	/**
 	 * Updates the details of an existing item after validation.
 	 *
-	 * @param Item_id		the ID of the item to be updated.
+	 * @param Item_id       the ID of the item to be updated.
 	 * @param Item_name     the updated name of the item
 	 * @param Item_category the updated category of the item
 	 * @param Item_size     the updated size of the item
@@ -32,7 +32,8 @@ public class ItemController {
 	public void EditItem(String Item_id, String Item_name, String Item_category, String Item_size, String Item_price)
 			throws IllegalArgumentException {
 		CheckItemValidation(Item_name, Item_category, Item_size, Item_price);
-		Item.EditItem(Item_id, Item_name, Item_category, Item_size, Item_price);;
+		Item.EditItem(Item_id, Item_name, Item_category, Item_size, Item_price);
+		;
 	}
 
 	/**
@@ -115,10 +116,9 @@ public class ItemController {
 	 * Accepts an offer for the specified item.
 	 *
 	 * @param Item_id           the unique identifier of the item
-	 * @param Item_status_offer the status of the offer, including details
 	 */
-	public void AcceptOffer(String Item_id, String Item_status_offer) {
-		Item.AcceptOffer(Item_id, Item_status_offer);
+	public void AcceptOffer(String Item_id) {
+		Item.AcceptOffer(Item_id);
 	}
 
 	/**
@@ -140,17 +140,14 @@ public class ItemController {
 	}
 
 	/**
-	 * Declines an item with a specified reason.
+	 * Declines an item by deleting the item from the database
 	 *
 	 * @param Item_id the ID of the item to decline
 	 * @param reason  the reason for declining the item
 	 * @throws IllegalArgumentException if the reason is empty
 	 */
-	public void DeclineItem(String Item_id, String reason) throws IllegalArgumentException{
-		if(reason.isBlank()) {
-			throw new IllegalArgumentException("Reason cannot be empty");
-		}
-		Item.DeclineItem(Item_id, reason);
+	public void DeclineItem(String Item_id) throws IllegalArgumentException {
+		Item.DeclineItem(Item_id);
 	}
 
 	/**
@@ -171,5 +168,9 @@ public class ItemController {
 	 */
 	public ObservableList<Item> ViewOfferItem(String User_id) {
 		return Item.ViewOfferItem(User_id);
+	}
+
+	public ObservableList<Item> BrowseItem(String Item_seller_id) {
+		return Item.BrowseItem(Item_seller_id);
 	}
 }

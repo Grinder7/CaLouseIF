@@ -8,6 +8,9 @@ import controller.BuyerWishlistController;
 import controller.ItemController;
 import controller.LoginController;
 import controller.RegisterController;
+import controller.SellerDashboardController;
+import controller.SellerEditController;
+import controller.SellerOfferedItemController;
 import controller.TransactionController;
 import controller.UserController;
 import controller.WishlistController;
@@ -22,7 +25,10 @@ import view.BuyerPurchaseHistoryView;
 import view.BuyerWishlistView;
 import view.LoginView;
 import view.RegisterView;
+import view.SellerDashboardView;
 import view.SellerEditView;
+import view.SellerNavbar;
+import view.SellerOfferedItemView;
 import view.SellerUploadView;
 
 /**
@@ -69,8 +75,8 @@ public class PageData {
 	 * 
 	 * @return a {@code Node} representing the seller edit page view
 	 */
-	public static Node sellerEditPage() {
-		return new SellerEditView();
+	public static Node sellerEditPage(Item item) {
+		return new SellerEditView(new SellerEditController(new ItemController()),item);
 	}
 
 	/**
@@ -115,5 +121,17 @@ public class PageData {
 	
 	public static Node buyerPurchaseHistoryPage() {
 		return new BuyerPurchaseHistoryView(new BuyerPurchaseHistoryController());
+	}
+	
+	public static Node sellerDashboardPage() {
+		return new SellerDashboardView(new SellerDashboardController(new ItemController()));
+	}
+	
+	public static Node sellerNavbar() {
+		return new SellerNavbar();
+	}
+	
+	public static Node sellerOfferedItemPage() {
+		return new SellerOfferedItemView(new SellerOfferedItemController(new ItemController()));
 	}
 }

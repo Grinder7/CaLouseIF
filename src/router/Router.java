@@ -62,6 +62,7 @@ public class Router {
 		}
 		
 		if (!viewStack.isEmpty() && viewStack.peek().getClass().equals(node.getClass())) {
+			System.out.println("Same page : " + viewStack.peek().getClass());
 			return;
 		}
 //		if navigating to login or register, disable navbar and clear custom component. else enable navbar

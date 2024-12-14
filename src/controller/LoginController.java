@@ -35,8 +35,8 @@ public class LoginController {
 		if (user.getRole().equals("admin")) {
 			router.navigateTo(PageData.adminDashboardPage());
 		} else if (user.getRole().equals("seller")) {
-//			Ke dashboard
-			router.navigateTo(PageData.sellerUploadPage());
+			router.setCustomNavbar(PageData.sellerNavbar());;
+			router.navigateTo(PageData.sellerDashboardPage());
 		} else if (user.getRole().equals("buyer")) {
 			router.setCustomNavbar(PageData.buyerNavbar());
 			router.navigateTo(PageData.buyerHomePage());

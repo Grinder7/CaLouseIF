@@ -16,7 +16,10 @@ public class AdminDashboardController {
 	}
 	
 	public void handleDeclineButton(Item item, String reason) throws IllegalArgumentException{
-		itemController.DeclineItem(item.getItem_id(), reason);
+		if(reason.isBlank()) {
+			throw new IllegalArgumentException("Reason cannot be empty");
+		}
+		itemController.DeclineItem(item.getItem_id());
 	}
 
 	public void handleApproveButton(Item item) {

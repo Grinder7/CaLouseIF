@@ -165,6 +165,20 @@ public class Item {
 	}
 
 	/**
+	 * Retrieves all seller's items
+	 * 
+	 * This method fetches a list of all items that the seller has listed. The list
+	 * is returned as an ObservableList of Item objects.
+	 * 
+	 * @return An ObservableList of seller's Item objects.
+	 */
+	public static ObservableList<Item> BrowseItem(String Item_seller_id) {
+//		Add overload item_seller_id to take item that the seller sells
+		ItemRepository itemRepository = new ItemRepository();
+		return itemRepository.getItemBySeller(Item_seller_id);
+	}
+
+	/**
 	 * Retrieves an item by its name.
 	 * 
 	 * This method fetches an item from the repository based on the given item name.
@@ -282,12 +296,11 @@ public class Item {
 	 * have an offer, the method exits without changes.
 	 * 
 	 * @param Item_id           The ID of the item for which the offer is accepted.
-	 * @param item_status_offer The current offer status in the format
-	 *                          "offer,price,buyerId".
 	 */
-	public static void AcceptOffer(String Item_id, String item_status_offer) {
+	public static void AcceptOffer(String Item_id) {
 		ItemRepository itemRepository = new ItemRepository();
-		String[] itemStatus = item_status_offer.split(",");
+		Item item = itemRepository.getItemById(Item_id);
+		String[] itemStatus = item.getItem_offer_status().split(",");
 //		return if there's isn't an offer
 		if (!itemStatus[0].equals("offer")) {
 			return;
@@ -295,7 +308,7 @@ public class Item {
 		String offerPrice = itemStatus[1];
 		String buyerId = itemStatus[2];
 
-		itemRepository.updateAcceptOffer(Item_id, offerPrice);
+		itemRepository.updateAcceptOffer(Item_id, buyerId, offerPrice);
 
 		Transaction.PurchaseItems(buyerId, Item_id);
 //		Get current user (should be the current seller)
@@ -315,7 +328,8 @@ public class Item {
 	 */
 	public static void DeclineOffer(String Item_id) {
 		ItemRepository itemRepository = new ItemRepository();
-		itemRepository.updateOfferItem(Item_id, "no_offer");
+		String item_status = "no_offer";
+		itemRepository.updateOfferItem(Item_id, item_status);
 	}
 
 	/**
@@ -333,18 +347,14 @@ public class Item {
 	}
 
 	/**
-	 * Declines an item with a specified reason.
-	 * 
-	 * This method updates the status of an item to "declined" and records the
-	 * reason for declination.
+	 * Declines an item by deleting the item from the database
 	 * 
 	 * @param Item_id The ID of the item to decline.
 	 * @param reason  The reason for declining the item.
 	 */
-	public static void DeclineItem(String Item_id, String reason) {
+	public static void DeclineItem(String Item_id) {
 		ItemRepository itemRepository = new ItemRepository();
-		String item_status = String.format("declined,%s", reason);
-		itemRepository.updateItemStatus(Item_id, item_status);
+		itemRepository.deleteItem(Item_id);
 	}
 
 	/**

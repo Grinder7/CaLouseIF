@@ -10,6 +10,10 @@ public class UserSession {
 		this.user = user;
 	}
 	
+	private void setUser(User user) {
+		this.user = user;
+	}
+	
     /**
      * Initializes the user session with the specified {@code User}.
      * <p>
@@ -21,6 +25,7 @@ public class UserSession {
      */
 	public static UserSession initInstance(User user) {
 		if(userSession == null) userSession = new UserSession(user);
+		if(userSession.getUser() == null) userSession.setUser(user);
 		return userSession;
 	}
 	
