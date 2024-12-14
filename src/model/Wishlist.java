@@ -70,4 +70,10 @@ public class Wishlist {
 		return wishlistRepository.getWishlistByUserIdAndItemId(User_id, Item_id);
 	}
 
+	public static void RemoveItemWishlist(String Item_id) {
+//		Add one more method to remove the item from users wishlist
+		WishlistRepository wishlistRepository = new WishlistRepository();
+		wishlistRepository.removeWishlistByItemId(Item_id);
+	}
+
 }

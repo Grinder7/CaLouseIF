@@ -47,7 +47,7 @@ public class ItemRepository {
 	 */
 	public ObservableList<Item> getAllApprovedItem() {
 		itemList.clear();
-		String query = "SELECT * FROM item WHERE item_status LIKE 'approved%'";
+		String query = "SELECT * FROM item WHERE item_status = 'approved'";
 		try (PreparedStatement pstmt = db.getConnection().prepareStatement(query)) {
 			try (ResultSet rs = pstmt.executeQuery()) {
 				while (rs.next()) {

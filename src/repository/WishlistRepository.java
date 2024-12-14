@@ -114,4 +114,25 @@ public class WishlistRepository {
 		}
 		return null;
 	}
+
+	public void removeWishlistByItemId(String item_id) {
+		String query = "DELETE FROM wishlist WHERE Item_id = ?";
+
+		try (PreparedStatement pstmt = db.getConnection().prepareStatement(query)) {
+			pstmt.setString(1, item_id);
+			System.out.println(item_id);
+			System.out.println( pstmt.executeUpdate());
+
+			// remove from list
+			for (int i = 0; i < wishlistList.size(); i++) {
+				if (wishlistList.get(i).getItem_id().equals(item_id)) {
+					wishlistList.remove(i);
+					wishlistItemList.remove(i);
+					break;
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 }

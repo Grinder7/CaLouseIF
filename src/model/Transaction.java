@@ -56,6 +56,11 @@ public class Transaction {
 		if(itemStatus[0].equals("bought") && !itemStatus[1].equals(User_id)) {
 			return null;
 		}
+//		update item table from buyer
+		itemRepository.getAllApprovedItem();
+		
+//		remove this item from every buyer wishlist
+		Wishlist.RemoveItemWishlist(Item_id);
 		return transactionRepository.createTransaction(User_id, Item_id);
 	}
 

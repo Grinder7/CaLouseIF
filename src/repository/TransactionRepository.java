@@ -57,6 +57,7 @@ public class TransactionRepository {
 	public ObservableMap<Transaction, Item> getTransactionHistory(String user_id){
 		String query = "SELECT * FROM transaction WHERE User_id = ?";
 		ItemRepository itemRepository = new ItemRepository();
+		transactionList.clear();
 		try(PreparedStatement pstmt = db.getConnection().prepareStatement(query)) {
 			pstmt.setString(1, user_id);
 			try(ResultSet rs = pstmt.executeQuery()){
