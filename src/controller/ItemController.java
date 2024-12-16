@@ -56,6 +56,17 @@ public class ItemController {
 	}
 
 	/**
+	 * Retrieves a list of all available approved items.
+	 *
+	 * @param Item_seller_id the seller's id
+	 * @return an {@code ObservableList<Item>} containing all approved item that the
+	 *         user sells
+	 */
+	public ObservableList<Item> BrowseItem(String Item_seller_id) {
+		return Item.BrowseItem(Item_seller_id);
+	}
+
+	/**
 	 * Views an item by its name.
 	 *
 	 * @param Item_name the name of the item to view
@@ -115,7 +126,7 @@ public class ItemController {
 	/**
 	 * Accepts an offer for the specified item.
 	 *
-	 * @param Item_id           the unique identifier of the item
+	 * @param Item_id the unique identifier of the item
 	 */
 	public void AcceptOffer(String Item_id) {
 		Item.AcceptOffer(Item_id);
@@ -170,7 +181,4 @@ public class ItemController {
 		return Item.ViewOfferItem(User_id);
 	}
 
-	public ObservableList<Item> BrowseItem(String Item_seller_id) {
-		return Item.BrowseItem(Item_seller_id);
-	}
 }

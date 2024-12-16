@@ -77,7 +77,7 @@ public class PageData {
 	 * @return a {@code Node} representing the seller edit page view
 	 */
 	public static Node sellerEditPage(Item item) {
-		return new SellerEditView(new SellerEditController(new ItemController()),item);
+		return new SellerEditView(new SellerEditController(new ItemController()), item);
 	}
 
 	/**
@@ -104,7 +104,8 @@ public class PageData {
 	 * @return the {@code Node} representing the buyer's item details page
 	 */
 	public static Node buyerItemDetailsPage(Item item) {
-		return new BuyerItemDetailsView(new BuyerItemDetailsController(new ItemController(), new WishlistController(), new TransactionController()), item);
+		return new BuyerItemDetailsView(new BuyerItemDetailsController(new ItemController(), new WishlistController(),
+				new TransactionController()), item);
 	}
 
 	/**
@@ -115,24 +116,50 @@ public class PageData {
 	public static Parent buyerNavbar() {
 		return new BuyerNavbar();
 	}
-	
+
+	/**
+	 * Creates and returns the Buyer Wishlist page.
+	 *
+	 * @return a {@link Node} representing the buyer's wishlist page
+	 */
 	public static Node buyerWishlistPage() {
 		return new BuyerWishlistView(new BuyerWishlistController());
 	}
-	
+
+	/**
+	 * Creates and returns the Buyer Purchase History page.
+	 *
+	 * @return a {@link Node} representing the buyer's purchase history page
+	 */
 	public static Node buyerPurchaseHistoryPage() {
 		return new BuyerPurchaseHistoryView(new BuyerPurchaseHistoryController());
 	}
-	
+
+	/**
+	 * Creates and returns the Seller Dashboard page.
+	 *
+	 * @return a {@link Node} representing the seller's dashboard page
+	 */
 	public static Node sellerDashboardPage() {
 		return new SellerDashboardView(new SellerDashboardController(new ItemController()));
 	}
-	
+
+	/**
+	 * Creates and returns the Seller Navbar.
+	 *
+	 * @return a {@link Node} representing the seller's navigation bar
+	 */
 	public static Node sellerNavbar() {
 		return new SellerNavbar();
 	}
-	
+
+	/**
+	 * Creates and returns the Seller Offered Item page.
+	 *
+	 * @return a {@link Node} representing the seller's offered item page
+	 */
 	public static Node sellerOfferedItemPage() {
 		return new SellerOfferedItemView(new SellerOfferedItemController(new ItemController()));
 	}
+
 }

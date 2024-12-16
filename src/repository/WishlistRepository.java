@@ -97,6 +97,15 @@ public class WishlistRepository {
 		}
 	}
 
+	/**
+	 * Retrieves a {@link Wishlist} object based on the provided user ID and item
+	 * ID.
+	 *
+	 * @param user_id the ID of the user
+	 * @param item_id the ID of the item
+	 * @return a {@link Wishlist} object if a matching entry is found, or
+	 *         {@code null} otherwise
+	 */
 	public Wishlist getWishlistByUserIdAndItemId(String user_id, String item_id) {
 		String query = "SELECT * FROM wishlist WHERE User_id = ? AND Item_id = ?";
 
@@ -115,13 +124,24 @@ public class WishlistRepository {
 		return null;
 	}
 
+	/**
+	 * Removes a wishlist entry based on the provided item ID.
+	 * <p>
+	 * This method deletes a wishlist entry from the database where the
+	 * {@code item_id} matches the provided ID. Additionally, it removes the
+	 * corresponding entry from the in-memory {@code wishlistList} and
+	 * {@code wishlistItemList}.
+	 * </p>
+	 *
+	 * @param item_id the ID of the item to remove from the wishlist
+	 */
 	public void removeWishlistByItemId(String item_id) {
 		String query = "DELETE FROM wishlist WHERE Item_id = ?";
 
 		try (PreparedStatement pstmt = db.getConnection().prepareStatement(query)) {
 			pstmt.setString(1, item_id);
 			System.out.println(item_id);
-			System.out.println( pstmt.executeUpdate());
+			System.out.println(pstmt.executeUpdate());
 
 			// remove from list
 			for (int i = 0; i < wishlistList.size(); i++) {

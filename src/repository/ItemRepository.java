@@ -126,9 +126,10 @@ public class ItemRepository {
 
 	/**
 	 * Creates a new item record in the database.
-	 * 
+	 * </p>
 	 * This method generates a new item with a unique ID and sets its initial status
 	 * to "waiting." The item is then added to the database.
+	 * </p>
 	 * 
 	 * @param Item_seller_id The ID of the seller creating the item.
 	 * @param Item_name      The name of the item.
@@ -276,9 +277,10 @@ public class ItemRepository {
 
 	/**
 	 * Retrieves all items waiting for review.
-	 * 
+	 * <p>
 	 * This method fetches all items with a status of "waiting," indicating they are
 	 * pending approval.
+	 * </p>
 	 * 
 	 * @return An {@code ObservableList<Item>} containing all items awaiting review.
 	 */
@@ -296,6 +298,18 @@ public class ItemRepository {
 		return itemList;
 	}
 
+	/**
+	 * Updates the status of an item to indicate it has been purchased.
+	 * <p>
+	 * This method updates the status of the specified item in the database by
+	 * setting {@code Item_status} to "bought" and {@code Item_offer_status} to
+	 * "no_offer". After updating the database, it also updates the in-memory item
+	 * list to reflect the change.
+	 * </p>
+	 *
+	 * @param item_id the ID of the item to update
+	 * @see #updateItemList(String)
+	 */
 	public void updateItemPurchase(String item_id) {
 		String query = "UPDATE item SET Item_status = 'bought', Item_offer_status='no_offer' WHERE Item_id = ?";
 		try (PreparedStatement pstmt = db.getConnection().prepareStatement(query)) {
@@ -308,6 +322,20 @@ public class ItemRepository {
 		}
 	}
 
+	/**
+	 * Retrieves a list of items associated with a specific seller.
+	 * <p>
+	 * This method fetches all items from the database where the seller's ID matches
+	 * the specified {@code Item_seller_id}, and the {@code Item_status} is neither
+	 * "waiting" nor "bought". The result is stored in an {@link ObservableList}.
+	 * </p>
+	 *
+	 * @param Item_seller_id the ID of the seller whose items are to be retrieved
+	 * @return an {@link ObservableList} containing the items associated with the
+	 *         seller
+	 * @see Item
+	 * @see #createItemFromResultSet(ResultSet)
+	 */
 	public ObservableList<Item> getItemBySeller(String Item_seller_id) {
 		String query = "SELECT * FROM item WHERE Item_seller_id = ? AND Item_status NOT LIKE 'waiting' AND Item_status NOT LIKE 'bought'";
 		itemList.clear();

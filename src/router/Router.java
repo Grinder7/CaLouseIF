@@ -60,7 +60,7 @@ public class Router {
 		if (centerNode != null) {
 			viewStack.add(centerNode);
 		}
-		
+
 		if (!viewStack.isEmpty() && viewStack.peek().getClass().equals(node.getClass())) {
 			return;
 		}
@@ -111,8 +111,15 @@ public class Router {
 		return appNavbar;
 	}
 
+	/**
+	 * Replaces the current custom component in the application's navigation bar
+	 * with the provided custom node.
+	 *
+	 * @param customNavbar the custom {@link Node} to insert into the application's
+	 *                     navigation bar
+	 */
+
 	public void setCustomNavbar(Node customNavbar) {
 		appNavbar.insertComponent(customNavbar);
-
 	}
 }

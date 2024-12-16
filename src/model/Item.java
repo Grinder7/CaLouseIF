@@ -104,10 +104,11 @@ public class Item {
 
 	/**
 	 * Uploads a new item for the current user.
-	 * 
+	 * <p>
 	 * This method creates a new item entry with the specified details and
 	 * associates it with the currently logged-in user (should be the seller). The
 	 * new item is stored in the item repository.
+	 * </p>
 	 * 
 	 * @param Item_name     The name of the item.
 	 * @param Item_category The category of the item.
@@ -122,9 +123,6 @@ public class Item {
 
 	/**
 	 * Edits the details of an existing item.
-	 * 
-	 * This method updates the details of an existing item with the specified ID in
-	 * the item repository.
 	 * 
 	 * @param Item_id       The ID of the item to be updated.
 	 * @param Item_name     The new name of the item.
@@ -141,8 +139,6 @@ public class Item {
 	/**
 	 * Deletes an item.
 	 * 
-	 * This method removes an item with the specified ID from the item repository.
-	 * 
 	 * @param Item_id The ID of the item to be deleted.
 	 */
 	public static void DeleteItem(String Item_id) {
@@ -152,10 +148,11 @@ public class Item {
 
 	/**
 	 * Retrieves all approved items available for browsing.
-	 * 
+	 * <p>
 	 * This method fetches a list of all items that have been approved and are
 	 * available for browsing by users. The list is returned as an ObservableList of
 	 * Item objects.
+	 * </p>
 	 * 
 	 * @return An ObservableList of approved Item objects.
 	 */
@@ -167,9 +164,6 @@ public class Item {
 	/**
 	 * Retrieves all seller's items
 	 * 
-	 * This method fetches a list of all items that the seller has listed. The list
-	 * is returned as an ObservableList of Item objects.
-	 * 
 	 * @return An ObservableList of seller's Item objects.
 	 */
 	public static ObservableList<Item> BrowseItem(String Item_seller_id) {
@@ -180,8 +174,6 @@ public class Item {
 
 	/**
 	 * Retrieves an item by its name.
-	 * 
-	 * This method fetches an item from the repository based on the given item name.
 	 * 
 	 * @param Item_name The name of the item to retrieve.
 	 * @return The {@code Item} object corresponding to the given name, or
@@ -246,8 +238,9 @@ public class Item {
 
 	/**
 	 * Retrieves a list of items that are pending review by the admin.
-	 * 
+	 * <p>
 	 * This method fetches all items with a status of "waiting" from the database.
+	 * </p>
 	 * 
 	 * @return An {@code ObservableList<Item>} containing all items that are waiting
 	 *         for review.
@@ -259,11 +252,12 @@ public class Item {
 
 	/**
 	 * Submits a new offer price for an item.
-	 * 
+	 * <p>
 	 * This method allows a user to submit a new offer price for an item. It checks
 	 * if the new offer is higher than the previous offer price. If not, it throws
 	 * an IllegalArgumentException. The offer details (price and user ID) are then
 	 * stored in the item repository.
+	 * </p>
 	 * 
 	 * @param Item_id    The ID of the item for which the offer is being made.
 	 * @param item_price The new offer price for the item.
@@ -290,12 +284,13 @@ public class Item {
 
 	/**
 	 * Accepts an offer made on an item.
-	 * 
+	 * <p>
 	 * This method processes an accepted offer by updating the item's status,
 	 * recording a transaction, and updating the offer status. If the item does not
 	 * have an offer, the method exits without changes.
+	 * </p>
 	 * 
-	 * @param Item_id           The ID of the item for which the offer is accepted.
+	 * @param Item_id The ID of the item for which the offer is accepted.
 	 */
 	public static void AcceptOffer(String Item_id) {
 		ItemRepository itemRepository = new ItemRepository();
@@ -320,9 +315,10 @@ public class Item {
 
 	/**
 	 * Declines an offer made on an item.
-	 * 
+	 * <p>
 	 * This method resets the offer status of an item to indicate no offers are
 	 * currently available.
+	 * </p>
 	 * 
 	 * @param Item_id The ID of the item for which the offer is declined.
 	 */
@@ -334,9 +330,10 @@ public class Item {
 
 	/**
 	 * Approves an item for listing.
-	 * 
+	 * <p>
 	 * This method updates the status of an item to "approved" for visibility or use
 	 * in the system.
+	 * </p>
 	 * 
 	 * @param Item_id The ID of the item to approve.
 	 */
@@ -360,8 +357,10 @@ public class Item {
 	/**
 	 * Retrieves an accepted item by its ID.
 	 * 
+	 * <p>
 	 * This method fetches an item if its status starts with "approved". Otherwise,
 	 * it returns {@code null}.
+	 * </p>
 	 * 
 	 * @param Item_id The ID of the item to retrieve.
 	 * @return The {@code Item} object if the status is "approved"; otherwise,
@@ -379,10 +378,11 @@ public class Item {
 
 	/**
 	 * Retrieves items that have been offered to the seller.
-	 * 
+	 * <p>
 	 * This method fetches a list of items with offers made by buyers, showing
 	 * details such as the item's name, category, size, initial price, and the
 	 * offered price.
+	 * </p>
 	 * 
 	 * @param User_id The ID of the seller to view offered items.
 	 * @return An {@code ObservableList<Item>} containing items with buyer offers.

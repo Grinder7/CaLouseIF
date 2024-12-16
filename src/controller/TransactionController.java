@@ -17,7 +17,15 @@ public class TransactionController {
 		return Transaction.PurchaseItems(User_id, Item_id);
 	}
 
-	
+	/**
+	 * Retrieves the transaction history for a specific user, mapping each
+	 * transaction to the corresponding item.
+	 *
+	 * @param user_id The unique identifier of the user whose transaction history is
+	 *                to be retrieved.
+	 * @return An {@link ObservableMap} where each {@link Transaction} is mapped to
+	 *         the corresponding {@link Item} in the user's transaction history.
+	 */
 	public ObservableMap<Transaction, Item> ViewHistory(String user_id) {
 		return Transaction.ViewHistory(user_id);
 	}
