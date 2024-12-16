@@ -20,15 +20,21 @@ This project is for final Project of COMP6115001 Object Oriented Analysis & Desi
 
 ## Run Locally
 
-1. Clone the project
-   ```
-     git clone https://github.com/Grinder7/CaLouseIF
-   ```
-2. Import project into Eclipse Java IDE
-   Open the project in eclipse and configure build path to make sure the JavaFX and MySQLConnector library is properly added. If not, add the libraries into Modulepath.
-
-3. Prepare database
-   Make a migration by importing Migration in src/resources/SQL into MySQL Database. If you want to include example data you can use the MigrationSeeder. Put the database credentials in src/repository/DatabaseConnector
-
-4. Run project
-   Open src/main/Main and press Ctrl+F11 or the Run button
+<ol>
+  <li>
+    Clone the project
+    <pre><code>git clone https://github.com/Grinder7/CaLouseIF</code></pre>
+  </li>
+  <li>
+    Import project into Eclipse Java IDE
+    <p>Open the project in Eclipse and configure the build path to make sure the JavaFX and MySQLConnector library are properly added. If not, add the libraries into the Modulepath.</p>
+  </li>
+  <li>
+    Prepare database
+    <p>Make a migration by importing Migration in <code>src/resources/SQL</code> into MySQL Database. If you want to include example data, you can use the MigrationSeeder. Put the database credentials in <code>src/repository/DatabaseConnector</code>.</p>
+  </li>
+  <li>
+    Run project
+    <p>Open <code>src/main/Main</code> and press Ctrl+F11 or the Run button.</p>
+  </li>
+</ol>
